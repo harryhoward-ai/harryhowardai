@@ -1,7 +1,7 @@
 import { useAppKitAccount, useAppKitNetwork, useAppKitProvider } from "@reown/appkit/react";
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 import { BrowserProvider, Contract, Eip1193Provider, formatUnits } from "ethers";
-import { AirdropApi, AirdropData } from "@/utils/DashFunApi";
+import { AirdropApi, AirdropData } from "@/utils/Api";
 import { useDashFunUser } from "../DashFun/DashFunUser";
 import { useLaunchParams } from "@telegram-apps/sdk-react";
 

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ALL_POOLS } from '../data/pools';
 import { CryptoButton } from '../components/CryptoButton';
 import { ProgressBar } from '../components/ProgressBar';
+import { CountDown } from '@/components/CountDown/CountDown';
 import { Wallet, Globe, Twitter, Send } from 'lucide-react';
 
 export const PoolDetailPage: FC = () => {
@@ -58,6 +59,26 @@ export const PoolDetailPage: FC = () => {
 						Join the exclusive launchpad sale to secure your allocation early.
 					</p>
 				</div>
+
+				{/* Countdown (if starting soon) */}
+				{(() => {
+					const now = Date.now();
+					const timeToStart = pool.startTime - now;
+					const isStartsSoon = timeToStart > 0 && timeToStart < 24 * 60 * 60 * 1000;
+
+					if (isStartsSoon) {
+						return (
+							<div className="mb-8">
+								<CountDown
+									remaining={Math.floor(timeToStart / 1000)}
+									title="Starts In"
+									className="mx-0 w-full"
+								/>
+							</div>
+						);
+					}
+					return null;
+				})()}
 
 				{/* Progress Section */}
 				<div className="bg-crypto-card rounded-2xl p-6 border border-white/5 shadow-lg">

@@ -4,7 +4,7 @@ import { EthersAdapter } from "@reown/appkit-adapter-ethers";
 import { AppKitNetwork, bsc, bscTestnet } from '@reown/appkit/networks'
 import { useAppKit } from "@reown/appkit/react";
 import { FC } from 'react';
-import { Env, getEnv } from '@/utils/DashFunApi';
+import { Env, getEnv } from '@/utils/Api';
 
 // 1. Get projectId
 const projectId = '0cbed54d6cddbb99a52e4fc4a6f209c4';

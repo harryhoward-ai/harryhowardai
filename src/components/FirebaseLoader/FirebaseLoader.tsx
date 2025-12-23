@@ -4,7 +4,7 @@ import { DashFunUser } from "../DashFunData/UserData"
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
-import { Env, getEnv, PaymentData } from "@/utils/DashFunApi";
+import { Env, getEnv, PaymentData } from "@/utils/Api";
 import { UserLoginEvent, GameDataLoadedEvent, UserEnterGameEvent, UserPaymentEvent, UserRechargeEvent, UnloadingEvent, TopupItem, UserActivedEvent, UserXpReached5kEvent } from "../Event/Events";
 import { createLogger } from "@/utils/createLogger";
 

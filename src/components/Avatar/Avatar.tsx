@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useDashFunAvatar, useDashFunUser } from "../DashFun/DashFunUser";
 import ReactAvatar from "react-avatar";
-import { getAvatarUrl, UserApi } from "@/utils/DashFunApi";
+import { getAvatarUrl, UserApi } from "@/utils/Api";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import { useSignal, initData } from "@telegram-apps/sdk-react";
 

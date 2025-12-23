@@ -12,7 +12,7 @@ import { FishingVerse_DailyCheckIn } from "@/pages/GameCenterPage/SubPages/Daily
 import { GameCenter_TopPage } from "@/pages/GameCenterPage/SubPages/TopsPage";
 import LaunchpadPage from "@/pages/Launchpad/LaunchpadPage";
 import { PoolDetailPage } from "@/pages/Launchpad/SubPages/PoolDetailPage";
-import { Bitcoin, Gift, TrendingUpDown, Trophy, Rocket } from "lucide-react";
+import { Bitcoin, Gift, Rocket, Trophy } from "lucide-react";
 import { createHashRouter, RouteObject, useNavigate } from "react-router-dom";
 
 export interface AppRoute {
@@ -64,10 +64,9 @@ export const routes: AppRoute[] = [
     id: "gamecenter", path: "/game-center", Component: GameCenterPage, allowYScroll: false, back: "nop",
     subRoutes: [
       { id: "gamecenter-main", path: "main", Component: GameCenter_MainPage, allowYScroll: true, back: "close", title: "Main", icon: < Bitcoin absoluteStrokeWidth size={28} /> },
-      { id: "gamecenter-games", path: "games", Component: LaunchpadPage, allowYScroll: true, back: "/game-center/main", title: "Forecast", icon: <TrendingUpDown absoluteStrokeWidth size={28} /> },
+      { id: "gamecenter-games", path: "games", Component: LaunchpadPage, allowYScroll: true, back: "/game-center/main", title: "Launchpad", icon: <Rocket absoluteStrokeWidth size={28} /> },
       { id: "gamecenter-tasks", path: "tasks", Component: GameCenter_TaskPage, allowYScroll: true, back: "/game-center/main", title: "Tasks", icon: <Gift absoluteStrokeWidth size={28} /> },
       { id: "gamecenter-tops", path: "tops", Component: GameCenter_TopPage, allowYScroll: true, back: "/game-center/main", title: "Top", icon: <Trophy absoluteStrokeWidth size={28} /> },
-      { id: "gamecenter-launchpad", path: "launchpad", Component: LaunchpadPage, allowYScroll: true, back: "/game-center/main", title: "Launchpad", icon: <Rocket absoluteStrokeWidth size={28} /> },
       { id: "gamecenter-launchpad-pool", path: "launchpad/pool/:id", Component: PoolDetailPage, allowYScroll: true, back: "/game-center/launchpad" },
       { id: "gamecenter-profile", path: "profile", Component: GameCenter_Profile, allowYScroll: true, back: "/game-center/main" },
       { id: "fishing-verse-daily-checkin", path: "daily-checkin", Component: FishingVerse_DailyCheckIn, allowYScroll: true, back: "/game-center/main" }

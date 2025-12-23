@@ -1,6 +1,6 @@
 import dashfunIcon from "@/icons/nolan-icon-512.png";
 import AvatarUpload from "@/pages/GameCenterPage/Components/AvatarUploader";
-import { FishingVerseApi } from "@/utils/DashFunApi";
+import { FishingVerseApi } from "@/utils/Api";
 import { initData, useSignal } from "@telegram-apps/sdk-react";
 import { Input } from "@telegram-apps/telegram-ui";
 import { User } from "lucide-react";

@@ -1,5 +1,5 @@
 import { GameData, GameDataParams, GameListResult, GameListType } from "@/components/DashFunData/GameData";
-import { GameApi } from "@/utils/DashFunApi";
+import { GameApi } from "@/utils/Api";
 import { initData, useSignal } from "@telegram-apps/sdk-react";
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 

@@ -2,7 +2,7 @@ import AddLocation from "@/components/AddLocation/AddLocation";
 import { useDashFunUser } from "@/components/DashFun/DashFunUser";
 import { CryptoButton } from "@/pages/Launchpad/components/CryptoButton";
 import { Header } from "@/pages/Launchpad/components/Header";
-import { NolanDevApi } from "@/utils/DashFunApi";
+import { NolanDevApi } from "@/utils/Api";
 import { initData, useSignal } from "@telegram-apps/sdk-react";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";

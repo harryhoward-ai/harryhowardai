@@ -1,4 +1,4 @@
-import { SpinWheelApi } from "@/utils/DashFunApi";
+import { SpinWheelApi } from "@/utils/Api";
 import { initData, useLaunchParams, useSignal } from "@telegram-apps/sdk-react";
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react"
 import { useDashFunGame } from "./DashFunGame";

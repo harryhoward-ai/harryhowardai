@@ -1,5 +1,5 @@
 import { Coin, FishingVerseUserProfile, RechargePriceType, RechargePriceTypeText } from "@/constats";
-import { PaymentData } from "@/utils/DashFunApi";
+import { PaymentData } from "@/utils/Api";
 import { GameData } from "../DashFunData/GameData";
 import { DashFunUser } from "../DashFunData/UserData";
 

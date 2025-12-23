@@ -11,7 +11,7 @@ import { FishingAvatar } from "@/components/Avatar/Avatar";
 import { CountDown } from "@/components/CountDown/CountDown";
 import { FishingPostData } from "@/constats";
 import iconCheckin from "@/icons/icon-checkin2.png";
-import { MarketsApi, NolanDevApi, TokenMarketInfo } from "@/utils/DashFunApi";
+import { MarketsApi, NolanDevApi, TokenMarketInfo } from "@/utils/Api";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import { useEffectOnActive } from "keepalive-for-react";
 import { Fish, MapPin } from "lucide-react";

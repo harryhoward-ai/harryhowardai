@@ -1,10 +1,9 @@
-import { FC } from 'react';
-import { Wallet, Check } from 'lucide-react';
 import { DFProfileAvatar } from '@/components/Avatar/Avatar';
+import { CoinPanel } from '@/components/Coins/coins';
 import { useDashFunCoins } from '@/components/DashFun/DashFunCoins';
 import { useDashFunUser } from '@/components/DashFun/DashFunUser';
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CoinPanel } from '@/components/Coins/coins';
 
 export const Header: FC<{ disableClick?: boolean }> = ({ disableClick = false }) => {
 	const navigator = useNavigate();

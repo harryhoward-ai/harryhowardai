@@ -1,4 +1,4 @@
-import { Env, getEnv, PaymentData } from "@/utils/DashFunApi";
+import { Env, getEnv, PaymentData } from "@/utils/Api";
 import { useEffect, useRef, useState } from "react";
 import { DashFunUser } from "../DashFunData/UserData";
 import { GameData } from "../DashFunData/GameData";
@@ -94,7 +94,7 @@ const TalkingDataLoader = () => {
         window.TDAPP?.onEvent("用户激活", userId, { userId: userId })
     }
 
-    const onUserXpReached5k = (userId:string)=>{
+    const onUserXpReached5k = (userId: string) => {
         logInfo(false, "User XP Reached 5k", userId)
         window.TDAPP?.onEvent("用户XP达到5000", userId, { userId: userId })
     }

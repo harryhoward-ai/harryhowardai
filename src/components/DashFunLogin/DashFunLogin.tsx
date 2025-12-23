@@ -2,7 +2,7 @@ import aniSuccess from "@/assets/animation/successful.json";
 import dashfunIcon from "@/icons/nolan-icon-512.png";
 import { makeBrowserEnv, } from "@/mockEnv";
 import { CryptoButton } from "@/pages/Launchpad/components/CryptoButton";
-import { AccApi, AccountStatus, AccountType, DashFunAccount, getEnv } from "@/utils/DashFunApi";
+import { AccApi, AccountStatus, AccountType, DashFunAccount, getEnv } from "@/utils/Api";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { initData } from "@telegram-apps/sdk-react";
 import { Input, Spinner } from '@telegram-apps/telegram-ui';

@@ -1,7 +1,7 @@
 import { DFUserAvatar } from "@/components/Avatar/Avatar"
 import { toCurrency } from "@/constats"
 import xpIcon from "@/icons/xp-icon.svg"
-import { LeaderBoardApi } from "@/utils/DashFunApi"
+import { LeaderBoardApi } from "@/utils/Api"
 import { initData, useSignal } from "@telegram-apps/sdk-react"
 import { useEffectOnActive } from "keepalive-for-react"
 import { FC, useState } from "react"

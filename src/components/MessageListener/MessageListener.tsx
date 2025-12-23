@@ -1,4 +1,4 @@
-import { Env, getEnv, PaymentApi } from "@/utils/DashFunApi";
+import { Env, getEnv, PaymentApi } from "@/utils/Api";
 import {
 	initData,
 	invoice,

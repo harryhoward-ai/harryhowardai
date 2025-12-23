@@ -3,7 +3,7 @@ import useDashFunSafeArea from "@/components/DashFun/DashFunSafeArea";
 import { TaskStatusChangedEvent } from "@/components/Event/Events";
 import { TaskStatus } from "@/constats";
 import { AppRoute, routes } from "@/navigation/routes";
-import { TaskApi } from "@/utils/DashFunApi";
+import { TaskApi } from "@/utils/Api";
 import { useLaunchParams } from "@telegram-apps/sdk-react";
 import { Tabbar } from "@telegram-apps/telegram-ui";
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";

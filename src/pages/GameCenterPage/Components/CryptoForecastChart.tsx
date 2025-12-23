@@ -1,4 +1,4 @@
-import { MarketsApi } from "@/utils/DashFunApi";
+import { MarketsApi } from "@/utils/Api";
 import { initData, useSignal } from "@telegram-apps/sdk-react";
 import React, { useEffect, useState } from "react";
 import {

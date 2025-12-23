@@ -1,4 +1,4 @@
-import { Env, GameApi, getEnv } from "@/utils/DashFunApi";
+import { Env, GameApi, getEnv } from "@/utils/Api";
 import { initData, useLaunchParams, useSignal } from "@telegram-apps/sdk-react";
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 import { GameData } from "../DashFunData/GameData";

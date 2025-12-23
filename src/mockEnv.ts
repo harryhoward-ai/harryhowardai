@@ -1,6 +1,6 @@
 import { isTMA, mockTelegramEnv, parseInitData } from '@telegram-apps/sdk-react';
 import { v4 as uuidv4 } from "uuid";
-import { AccountType, Env, getEnv } from './utils/DashFunApi';
+import { AccountType, Env, getEnv } from './utils/Api';
 
 // It is important, to mock the environment only for development purposes. When building the
 // application, import.meta.env.DEV will become false, and the code inside will be tree-shaken,

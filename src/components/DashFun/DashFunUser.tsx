@@ -1,4 +1,4 @@
-import { UserApi } from "@/utils/DashFunApi";
+import { UserApi } from "@/utils/Api";
 import { isInTelegram } from "@/utils/Utils";
 import { initData, useSignal } from "@telegram-apps/sdk-react";
 import { Spinner } from "@telegram-apps/telegram-ui";

@@ -5,7 +5,7 @@ import { useDashFunUser } from "@/components/DashFun/DashFunUser";
 import { UserProfileUpdatedEvent } from "@/components/Event/Events";
 import { dataURLtoBlob } from "@/components/Utils/File";
 import { makeBrowserEnv } from "@/mockEnv";
-import { AccApi, AccountType, DashFunAccount, FishingVerseApi, getAvatarUrl, getEnv } from "@/utils/DashFunApi";
+import { AccApi, AccountType, DashFunAccount, FishingVerseApi, getAvatarUrl, getEnv } from "@/utils/Api";
 import { isInTelegram } from "@/utils/Utils";
 import { initData, useSignal } from "@telegram-apps/sdk-react";
 import { Input, Modal } from "@telegram-apps/telegram-ui";

@@ -1,5 +1,5 @@
 import { retrieveLaunchParams } from "@telegram-apps/sdk-react";
-import { getEnv } from "./DashFunApi";
+import { getEnv } from "./Api";
 
 export const convertMilliseconds = (milliseconds: number) => {
 	const seconds = Math.floor(milliseconds / 1000);

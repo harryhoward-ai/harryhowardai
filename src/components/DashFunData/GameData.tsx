@@ -1,4 +1,4 @@
-import { TGLink } from "@/utils/DashFunApi";
+import { TGLink } from "@/utils/Api";
 
 type GameDataParams = {
 	id: string;

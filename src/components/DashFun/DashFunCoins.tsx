@@ -1,5 +1,5 @@
 import { Coin, CoinInfo, CoinUserData, TaskStatus } from "@/constats"
-import { CoinApi } from "@/utils/DashFunApi"
+import { CoinApi } from "@/utils/Api"
 import { useLaunchParams } from "@telegram-apps/sdk-react"
 import { createContext, PropsWithChildren, useCallback, useContext, useEffect, useReducer, useState } from "react"
 import { SpinWheelStatusChangedEvent, TaskStatusChangedEvent, UserActivedEvent, UserXpReached5kEvent } from "../Event/Events"

@@ -8,7 +8,7 @@ import iconX from "./icons/icon-x.png";
 import iconTg from "./icons/icon-telegram.png";
 
 import dialyLoginIcon from "./icons/icon-calendar.png";
-import { getImageUrl } from "./utils/DashFunApi";
+import { getImageUrl } from "./utils/Api";
 
 
 export const DashFunCoins = {

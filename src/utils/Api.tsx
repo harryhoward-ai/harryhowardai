@@ -17,19 +17,19 @@ let env: Env = Env.Test
 //const api_local = "https://tma-server-test.nexgami.com/api/v1/"
 const api_local = "http://localhost:8088/api/v1/"
 const api_test = "https://dashfun-server-test.nexgami.com/api/v1/"
-const api_prod = "https://server.nolandevq.com/api/v1/"
+const api_prod = "https://server.harryhowardai.com/api/v1/"
 
 export const getImageUrl = (id: string | undefined, url: string | undefined) => {
 	if (url?.startsWith("http")) {
 		return url;
 	} else {
-		return `https://res.dashfun.games/images/${id}/${url}`;
+		return `https://res.harryhowardai.com/images/${id}/${url}`;
 	}
 }
 
 export const getAvatarUrl = (userId: string, version: string) => {
 	const avatarPath = `avatar_${userId}.png?v=${version}`;
-	return `https://res.dashfun.games/images/users/${avatarPath}`;
+	return `https://res.harryhowardai.com/images/users/${avatarPath}`;
 }
 
 const api_url = () => {
@@ -40,12 +40,12 @@ const api_url = () => {
 
 		return api_test;
 	}
-	if (url.indexOf("https://tma.nolandevq.com") >= 0) {
+	if (url.indexOf("https://tma.harryhowardai.com") >= 0) {
 		env = Env.Prod
 
 		return api_prod;
 	}
-	if (url.indexOf("https://app.nolandevq.com") >= 0) {
+	if (url.indexOf("https://app.harryhowardai.com") >= 0) {
 		env = Env.Prod
 
 		return api_prod;

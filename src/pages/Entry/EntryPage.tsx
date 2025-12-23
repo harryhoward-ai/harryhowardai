@@ -1,4 +1,4 @@
-import { Env, getEnv } from '@/utils/DashFunApi';
+import { Env, getEnv } from '@/utils/Api';
 import { channelSaveKey } from '@/utils/Utils';
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';

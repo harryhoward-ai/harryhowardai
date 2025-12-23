@@ -4,7 +4,7 @@ import '@telegram-apps/telegram-ui/dist/styles.css';
 import { createRoot } from 'react-dom/client';
 import { Root } from './components/Root.tsx';
 import './index.css';
-import { AccountType, Env, getEnv } from './utils/DashFunApi.tsx';
+import { AccountType, Env, getEnv } from './utils/Api.tsx';
 import DBMgr from './components/DBMgr/DBMgr.ts';
 import "./mockEnv.ts";
 import makeMockTgEnv, { makeBrowserEnv } from './mockEnv.ts';
@@ -36,8 +36,8 @@ if (idx > 0) {
 		}
 	}
 } else {
-	if (path.includes("app.nolandevq.com")) {
-		//如果是app.nolandevq.com域名，默认是browser环境
+	if (path.includes("app.harryhowardai.com")) {
+		//如果是app.harryhowardai.com域名，默认是browser环境
 		channel = "browser";
 	} else {
 		//从localStroage中获取环境，如果获取不到默认就是tg环境
