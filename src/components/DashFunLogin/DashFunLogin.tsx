@@ -1,5 +1,5 @@
 import aniSuccess from "@/assets/animation/successful.json";
-import dashfunIcon from "@/icons/nolan-icon-512.png";
+import dashfunIcon from "@/icons/howardai-icon.png";
 import { makeBrowserEnv, } from "@/mockEnv";
 import { CryptoButton } from "@/pages/Launchpad/components/CryptoButton";
 import { AccApi, AccountStatus, AccountType, DashFunAccount, getEnv } from "@/utils/Api";
@@ -82,7 +82,7 @@ const Header: React.FC<{ mode: UiMode }> = ({ mode }) => {
 	return <div className='w-full flex flex-col py-4 items-center gap-2'>
 		<DFAvatar src={dashfunIcon} size={128} />
 		<div className="flex flex-col items-center">
-			<span className="text-3xl font-bold text-crypto-text">NolanDev</span>
+			<span className="text-3xl font-bold text-crypto-text">HowardAI</span>
 			{title && <span className="text-xl text-crypto-muted">{title}</span>}
 		</div>
 	</div>
@@ -216,7 +216,7 @@ const VerifyEmail: React.FC<DashFunVerifyProps> = ({ acc, onVerified }) => {
 				<CryptoButton fullWidth onClick={(e) => {
 					e.preventDefault();
 					onVerified && onVerified(verifiedAcc!);
-				}}>Enter NolanDev!</CryptoButton>
+				}}>Enter HowardAI!</CryptoButton>
 			</div>)
 		}
 	</form>

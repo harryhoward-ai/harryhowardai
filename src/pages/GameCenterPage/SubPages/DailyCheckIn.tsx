@@ -2,7 +2,7 @@ import AddLocation from "@/components/AddLocation/AddLocation";
 import { useDashFunUser } from "@/components/DashFun/DashFunUser";
 import { CryptoButton } from "@/pages/Launchpad/components/CryptoButton";
 import { Header } from "@/pages/Launchpad/components/Header";
-import { NolanDevApi } from "@/utils/Api";
+import { Api } from "@/utils/Api";
 import { initData, useSignal } from "@telegram-apps/sdk-react";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ export const FishingVerse_DailyCheckIn: FC = () => {
 		}
 		setPosting(true);
 		try {
-			await NolanDevApi.post(initDataRaw as string, post, location, fish);
+			await Api.post(initDataRaw as string, post, location, fish);
 			setPost("");
 			setLocation("");
 			setFish("");

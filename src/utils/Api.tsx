@@ -1362,7 +1362,7 @@ const FishingVerseApi = {
 	}
 }
 
-const NolanDevApi = {
+const Api = {
 
 	apiUrl: (): string => {
 		return dashFunApiUrl + "nolan/"
@@ -1393,7 +1393,7 @@ const NolanDevApi = {
 	},
 
 	checkinRemaining: async (tgToken: string): Promise<number> => {
-		const api = NolanDevApi.apiUrl() + "remaining"
+		const api = Api.apiUrl() + "remaining"
 		const result = await axios.get(api, {
 			headers: {
 				"Authorization": processToken(tgToken)
@@ -1410,7 +1410,7 @@ const NolanDevApi = {
 		}
 	},
 	post: async (tgToken: string, post: string, location: string, fish: string): Promise<string> => {
-		const api = NolanDevApi.apiUrl() + "post"
+		const api = Api.apiUrl() + "post"
 		const formData = new FormData();
 		formData.append("post", post);
 		formData.append("location", location);
@@ -1432,7 +1432,7 @@ const NolanDevApi = {
 		}
 	},
 	getPosts: async (tgToken: string, limit = 50): Promise<FishingPostData[]> => {
-		const api = NolanDevApi.apiUrl() + "posts"
+		const api = Api.apiUrl() + "posts"
 		const result = await axios.get(api, {
 			headers: {
 				"Authorization": processToken(tgToken)
@@ -1579,5 +1579,5 @@ const getEnv = () => {
 }
 
 
-export { AccountType, AccountStatus, AccApi, AirdropApi, GameApi, PaymentApi, RechargeApi, UserApi, TGLink, TaskApi, CoinApi, SpinWheelApi, LeaderBoardApi, FriendsApi, RechargeLink, FishingVerseApi, NolanDevApi, MarketsApi, getEnv, Env }
+export { AccountType, AccountStatus, AccApi, AirdropApi, GameApi, PaymentApi, RechargeApi, UserApi, TGLink, TaskApi, CoinApi, SpinWheelApi, LeaderBoardApi, FriendsApi, RechargeLink, FishingVerseApi, Api, MarketsApi, getEnv, Env }
 export type { PaymentData, RechargeOrder, DashFunAccount, AirdropData, AirdropVestingRequest, TokenMarketInfo }

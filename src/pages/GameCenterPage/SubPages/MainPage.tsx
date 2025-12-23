@@ -11,7 +11,7 @@ import { FishingAvatar } from "@/components/Avatar/Avatar";
 import { CountDown } from "@/components/CountDown/CountDown";
 import { FishingPostData } from "@/constats";
 import iconCheckin from "@/icons/icon-checkin2.png";
-import { MarketsApi, NolanDevApi, TokenMarketInfo } from "@/utils/Api";
+import { MarketsApi, Api, TokenMarketInfo } from "@/utils/Api";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import { useEffectOnActive } from "keepalive-for-react";
 import { Fish, MapPin } from "lucide-react";
@@ -25,7 +25,7 @@ const DailyCheckinButton: FC = () => {
 	const nav = useNavigate();
 
 	const updateDailyCheckInRemaining = async () => {
-		const remaining = await NolanDevApi.checkinRemaining(initDataRaw as string)
+		const remaining = await Api.checkinRemaining(initDataRaw as string)
 		setDailyCheckInRemaining(remaining);
 		// Removed redundant interval - CountDown handles ticking now.
 	};
@@ -67,7 +67,7 @@ export const GameCenter_MainPage: FC = () => {
 	const getPosts = async () => {
 		try {
 			setLoading(true);
-			const posts = await NolanDevApi.getPosts(initDataRaw as string);
+			const posts = await Api.getPosts(initDataRaw as string);
 			setPosts(posts);
 		} catch (error) {
 			console.error("Failed to fetch posts:", error);

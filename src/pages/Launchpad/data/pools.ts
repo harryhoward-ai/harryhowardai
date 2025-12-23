@@ -10,6 +10,9 @@ export interface PoolData {
 	raised?: number;
 	target?: number;
 	participants?: number;
+	description?: string;
+	minAllocation?: number;
+	maxAllocation?: number;
 }
 
 export const ALL_POOLS: PoolData[] = [
@@ -23,18 +26,10 @@ export const ALL_POOLS: PoolData[] = [
 		price: 0.045,
 		raised: 1250000,
 		target: 1500000,
-		participants: 3420
-	},
-	{
-		id: '1',
-		name: "Nolan Dev",
-		ticker: "Nolan",
-		startTime: Date.now() - 90000, // Started in the past
-		chain: "BSC",
-		price: 0.045,
-		raised: 1250000,
-		target: 1500000,
-		participants: 3420
+		participants: 3420,
+		description: "Aura Network is a scalable, agile and effortless Layer-1 blockchain with a comprehensive ecosystem built to accelerate global NFTs adoption.",
+		minAllocation: 100,
+		maxAllocation: 2000
 	},
 	// Upcoming Pools
 	{
@@ -43,15 +38,10 @@ export const ALL_POOLS: PoolData[] = [
 		ticker: 'NOVA',
 		startTime: Date.now() + 86400000 * 2, // > 24 hours
 		chain: "ETH",
-		price: 1.2
-	},
-	{
-		id: '3',
-		name: 'Fishing Verse',
-		ticker: 'FSV',
-		startTime: Date.now() + 3600000 * 3, // 3 hours
-		chain: "BSC",
-		price: 0.05
+		price: 1.2,
+		description: "NovaFi is the first decentralized exchange built on Ethereum that offers a seamless trading experience with low fees and high speed.",
+		minAllocation: 200,
+		maxAllocation: 5000
 	},
 	{
 		id: '4',
@@ -59,7 +49,10 @@ export const ALL_POOLS: PoolData[] = [
 		ticker: 'ETX',
 		startTime: Date.now() + 3600000 * 5, // 5 hours (Within 24h)
 		chain: "SOL",
-		price: 0.15
+		price: 0.15,
+		description: "Ethereal Exchange is a next-generation decentralized exchange on Solana, designed for high-frequency trading and liquidity provision.",
+		minAllocation: 50,
+		maxAllocation: 1000
 	},
 	{
 		id: '5',
@@ -67,6 +60,9 @@ export const ALL_POOLS: PoolData[] = [
 		ticker: 'SOLS',
 		startTime: Date.now() + 86400000 * 10, // > 24 hours
 		chain: "TON",
-		price: 0.08
+		price: 0.08,
+		description: "Solstice Protocol is a privacy-preserving DeFi protocol on TON, enabling anonymous transactions and secure yield farming.",
+		minAllocation: 100,
+		maxAllocation: 2500
 	},
 ];

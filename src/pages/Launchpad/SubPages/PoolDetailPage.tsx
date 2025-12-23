@@ -1,10 +1,10 @@
+import { CountDown } from '@/components/CountDown/CountDown';
+import { Globe, Send, Wallet, X } from 'lucide-react';
 import { FC, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ALL_POOLS } from '../data/pools';
 import { CryptoButton } from '../components/CryptoButton';
 import { ProgressBar } from '../components/ProgressBar';
-import { CountDown } from '@/components/CountDown/CountDown';
-import { Wallet, Globe, Twitter, Send } from 'lucide-react';
+import { ALL_POOLS } from '../data/pools';
 
 export const PoolDetailPage: FC = () => {
 	const { id } = useParams<{ id: string }>();
@@ -48,15 +48,14 @@ export const PoolDetailPage: FC = () => {
 				{/* Socials / Links (Mock) */}
 				<div className="flex items-center justify-center gap-6 text-crypto-muted">
 					<Globe size={24} className="hover:text-crypto-cyan transition-colors cursor-pointer" />
-					<Twitter size={24} className="hover:text-crypto-cyan transition-colors cursor-pointer" />
+					<X size={24} className="hover:text-crypto-cyan transition-colors cursor-pointer" />
 					<Send size={24} className="hover:text-crypto-cyan transition-colors cursor-pointer" />
 				</div>
 
-				{/* Description (Mock) */}
+				{/* Description */}
 				<div className="bg-crypto-card/50 rounded-2xl p-5 border border-white/5 text-sm leading-relaxed text-crypto-muted">
 					<p>
-						{pool.name} is a revolutionary protocol on {pool.chain} designed to empower the next generation of DeFi users.
-						Join the exclusive launchpad sale to secure your allocation early.
+						{pool.description || `${pool.name} is a revolutionary protocol on ${pool.chain} designed to empower the next generation of DeFi users. Join the exclusive launchpad sale to secure your allocation early.`}
 					</p>
 				</div>
 
@@ -106,11 +105,11 @@ export const PoolDetailPage: FC = () => {
 					</div>
 					<div className="bg-crypto-card/50 rounded-xl p-4 border border-white/5">
 						<div className="text-crypto-muted text-xs mb-1">Min Allocation</div>
-						<div className="text-white font-bold">$100</div>
+						<div className="text-white font-bold">${pool.minAllocation?.toLocaleString() || 'TBA'}</div>
 					</div>
 					<div className="bg-crypto-card/50 rounded-xl p-4 border border-white/5">
 						<div className="text-crypto-muted text-xs mb-1">Max Allocation</div>
-						<div className="text-white font-bold">$2,000</div>
+						<div className="text-white font-bold">${pool.maxAllocation?.toLocaleString() || 'TBA'}</div>
 					</div>
 				</div>
 
