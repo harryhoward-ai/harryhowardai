@@ -37,4 +37,5 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           source: "./dist"
-          target: "/home/website/websites/fishverse_web_test"
+          target: "/home/website/websites/howardai_web_test"
+
