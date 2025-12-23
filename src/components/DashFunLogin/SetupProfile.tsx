@@ -1,4 +1,4 @@
-import dashfunIcon from "@/icons/nolan-icon-512.png";
+import dashfunIcon from "@/icons/howardai-icon.png";
 import AvatarUpload from "@/pages/GameCenterPage/Components/AvatarUploader";
 import { FishingVerseApi } from "@/utils/Api";
 import { initData, useSignal } from "@telegram-apps/sdk-react";

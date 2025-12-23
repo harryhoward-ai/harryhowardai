@@ -1,7 +1,7 @@
 import { GameData } from "./components/DashFunData/GameData";
-import dashfunIcon from "./icons/dashfun-icon.svg";
+import dashfunIcon from "./icons/howardai-icon.png";
 import dashfunPointIcon from "./icons/xp-icon.svg";
-import dashfunCoinIcon from "./icons/dashfun-coin-icon.png";
+import dashfunCoinIcon from "./icons/xp-icon.svg";
 import npIcon from "./icons/xp-icon.svg";
 import leaderboardIcon from "./icons/leaderboard.png";
 import iconX from "./icons/icon-x.png";
