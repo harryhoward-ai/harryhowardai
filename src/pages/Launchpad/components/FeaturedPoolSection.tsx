@@ -12,14 +12,7 @@ export const FeaturedPoolSection: FC = () => {
 			{featuredPools.map((pool) => (
 				<div key={pool.id} className="w-full">
 					<FeaturedPoolCard
-						id={pool.id}
-						name={pool.name}
-						ticker={pool.ticker}
-						chain={pool.chain}
-						price={pool.price}
-						raised={pool.raised ?? 0}
-						target={pool.target ?? 0}
-						participants={pool.participants ?? 0}
+						pool={pool}
 					/>
 				</div>
 			))}

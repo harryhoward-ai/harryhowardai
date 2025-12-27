@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { CryptoButton } from '../components/CryptoButton';
 import { ProgressBar } from '../components/ProgressBar';
 import { ALL_POOLS } from '../data/pools';
+import { usePoolProgress } from '../hooks/usePoolProgress';
 
 export const PoolDetailPage: FC = () => {
 	const { id } = useParams<{ id: string }>();
@@ -19,27 +20,7 @@ export const PoolDetailPage: FC = () => {
 		);
 	}
 
-	const now = Date.now();
-	const isStarted = now >= pool.startTime;
-	const isEnded = pool.endTime ? now > pool.endTime : false;
-
-	let progressFactor = 0;
-	if (isStarted) {
-		if (isEnded) {
-			progressFactor = 1;
-		} else if (pool.endTime) {
-			const totalDuration = pool.endTime - pool.startTime;
-			const elapsed = now - pool.startTime;
-			progressFactor = Math.min(Math.max(elapsed / totalDuration, 0), 1);
-		}
-	}
-
-	const targetRaised = pool.target || 0;
-	const targetParticipants = pool.targetParticipants || 0;
-
-	const displayRaised = targetRaised * progressFactor;
-	const displayParticipants = Math.floor(targetParticipants * progressFactor);
-	const percentage = progressFactor * 100;
+	const { percentage, displayRaised, displayParticipants, isEnded } = usePoolProgress(pool);
 
 	return (
 		<div className="min-h-screen bg-crypto-bg text-crypto-text pb-24 font-sans">
@@ -139,7 +120,7 @@ export const PoolDetailPage: FC = () => {
 						<div className="text-right">
 							<div className="text-2xl font-bold text-white">{(percentage).toFixed(1)}%</div>
 							<div className="text-xs text-crypto-muted">
-								${displayRaised.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / ${pool.target?.toLocaleString()}
+								${displayRaised.toLocaleString(undefined, { maximumFractionDigits: 0 })} / ${pool.target?.toLocaleString()}
 							</div>
 						</div>
 					</div>

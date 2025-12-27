@@ -121,7 +121,7 @@ export const GameCenter_MainPage: FC = () => {
 					<CryptoButton
 						className="!px-6 !py-2 !text-sm"
 						onClick={() => {
-							openTelegramLink("https://t.me/+YkV3fvCBvFxmMDVl");
+							openTelegramLink("https://t.me/+kTB12jr8Qt1mZjM5");
 						}}>
 						Join
 					</CryptoButton>

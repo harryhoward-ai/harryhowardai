@@ -3,25 +3,19 @@ import { FC } from 'react';
 import { ProgressBar } from './ProgressBar';
 import { ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { PoolData } from '../data/pools';
+import { usePoolProgress } from '../hooks/usePoolProgress';
 
 interface FeaturedPoolCardProps {
-	id: string;
-	name: string;
-	ticker: string;
-	chain: string;
-	price: number;
-	logoUrl?: string; // Optional, placeholder used if missing
-	raised: number;
-	target: number;
-	participants: number;
+	pool: PoolData;
 }
 
-export const FeaturedPoolCard: FC<FeaturedPoolCardProps> = ({ id, name, ticker, chain, price, raised, target, participants }) => {
-	const percentage = (raised / target) * 100;
+export const FeaturedPoolCard: FC<FeaturedPoolCardProps> = ({ pool }) => {
+	const { percentage, displayRaised, displayParticipants } = usePoolProgress(pool);
 	const navigate = useNavigate();
 
 	const handleJoin = () => {
-		navigate(`/game-center/launchpad/pool/${id}`);
+		navigate(`/game-center/launchpad/pool/${pool.id}`);
 	};
 
 	return (
@@ -33,16 +27,16 @@ export const FeaturedPoolCard: FC<FeaturedPoolCardProps> = ({ id, name, ticker, 
 				<div className="flex items-center gap-4 mb-6">
 					<div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-xl font-bold text-crypto-bg shrink-0">
 						{/* Placeholder Logo if no URL */}
-						{ticker[0]}
+						{pool.ticker[0]}
 					</div>
 					<div>
-						<h3 className="text-crypto-text text-lg font-bold">{name}</h3>
+						<h3 className="text-crypto-text text-lg font-bold">{pool.name}</h3>
 						<div className="flex items-center gap-2 text-sm">
-							<span className="text-crypto-muted font-medium">{ticker}</span>
+							<span className="text-crypto-muted font-medium">{pool.ticker}</span>
 							<span className="w-1 h-1 rounded-full bg-white/20" />
-							<span className="text-crypto-cyan font-bold">{chain}</span>
+							<span className="text-crypto-cyan font-bold">{pool.chain}</span>
 							<span className="w-1 h-1 rounded-full bg-white/20" />
-							<span className="text-white font-medium">${price}</span>
+							<span className="text-white font-medium">${pool.price}</span>
 						</div>
 					</div>
 					<div className="ml-auto px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold border border-green-500/30 animate-pulse">
@@ -56,11 +50,11 @@ export const FeaturedPoolCard: FC<FeaturedPoolCardProps> = ({ id, name, ticker, 
 					<div className="flex justify-between text-sm">
 						<div>
 							<span className="text-crypto-muted">Raised: </span>
-							<span className="text-white font-bold">${raised.toLocaleString()}</span>
-							<span className="text-crypto-muted"> / ${target.toLocaleString()}</span>
+							<span className="text-white font-bold">${displayRaised.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
+							<span className="text-crypto-muted"> / ${pool.target?.toLocaleString()}</span>
 						</div>
 						<div className="text-crypto-cyan font-medium">
-							{participants.toLocaleString()} <span className="text-crypto-muted text-xs">Participants</span>
+							{displayParticipants.toLocaleString()} <span className="text-crypto-muted text-xs">Participants</span>
 						</div>
 					</div>
 
