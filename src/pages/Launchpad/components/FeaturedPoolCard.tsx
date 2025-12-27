@@ -25,9 +25,12 @@ export const FeaturedPoolCard: FC<FeaturedPoolCardProps> = ({ pool }) => {
 			<div className="relative bg-crypto-card/90 backdrop-blur-md rounded-2xl p-5 border border-white/5 shadow-xl">
 				{/* Header */}
 				<div className="flex items-center gap-4 mb-6">
-					<div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-xl font-bold text-crypto-bg shrink-0">
-						{/* Placeholder Logo if no URL */}
-						{pool.ticker[0]}
+					<div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-xl font-bold text-crypto-bg shrink-0 overflow-hidden">
+						{pool.icon ? (
+							<img src={pool.icon} alt={pool.name} className="w-full h-full object-cover" />
+						) : (
+							pool.ticker[0]
+						)}
 					</div>
 					<div>
 						<h3 className="text-crypto-text text-lg font-bold">{pool.name}</h3>

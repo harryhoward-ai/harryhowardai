@@ -20,6 +20,9 @@ export interface PoolData {
 	website?: string;
 	x?: string;
 	telegram?: string;
+
+	// Branding
+	icon?: string;
 }
 
 
@@ -42,7 +45,8 @@ export const ALL_POOLS: PoolData[] = [
 		maxAllocation: 2000,
 		website: "https://www.fishing-verse.com",
 		x: "https://x.com/fishverseweb3/",
-		telegram: "https://t.me/FishVerseweb3group"
+		telegram: "https://t.me/FishVerseweb3group",
+		icon: "https://res.fishing-verse.com/icons/icon-fishing.png" // Example placeholder
 	},
 	// Upcoming Pools
 	{
