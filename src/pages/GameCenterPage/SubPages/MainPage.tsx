@@ -117,6 +117,16 @@ export const GameCenter_MainPage: FC = () => {
 			<DailyCheckinButton />
 			<div className="w-full px-4">
 				<div className="w-full flex justify-between items-center p-4 rounded-xl bg-crypto-card/50 border border-white/5">
+					<span className="text-crypto-text font-medium">Official Website</span>
+					<CryptoButton
+						className="!px-6 !py-2 !text-sm"
+						onClick={() => {
+							window.open("https://harryhowardai.com", "_blank");
+						}}>
+						Visit
+					</CryptoButton>
+				</div>
+				<div className="w-full flex justify-between items-center p-4 rounded-xl bg-crypto-card/50 border border-white/5 mt-3">
 					<span className="text-crypto-text font-medium">Join Community</span>
 					<CryptoButton
 						className="!px-6 !py-2 !text-sm"
