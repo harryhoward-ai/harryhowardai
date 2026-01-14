@@ -14,11 +14,12 @@
     "predeploy": "npm run build"
   },
   "dependencies": {
+    "@base-org/account": "^2.5.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@lottiefiles/react-lottie-player": "^3.5.4",
-    "@reown/appkit": "^1.7.12",
-    "@reown/appkit-adapter-ethers": "^1.7.12",
+    "@reown/appkit": "^1.8.16",
+    "@reown/appkit-adapter-ethers": "^1.8.16",
     "@telegram-apps/react-router-integration": "^1.0.1",
     "@telegram-apps/sdk-react": "^2.0.25",
     "@telegram-apps/telegram-ui": "^2.1.7",

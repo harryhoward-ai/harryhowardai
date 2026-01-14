@@ -6,6 +6,7 @@ interface CryptoButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	size?: "sm" | "md" | "lg";
 	fullWidth?: boolean;
 	icon?: React.ReactNode;
+	loading?: boolean;
 }
 
 export const CryptoButton: FC<CryptoButtonProps> = ({
@@ -15,6 +16,7 @@ export const CryptoButton: FC<CryptoButtonProps> = ({
 	size = "md",
 	fullWidth = false,
 	icon,
+	loading = false,
 	...props
 }) => {
 	const baseStyles = "font-bold rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed";
@@ -39,10 +41,17 @@ export const CryptoButton: FC<CryptoButtonProps> = ({
 				${fullWidth ? "w-full" : ""}
 				${className || ""}
 			`}
+			disabled={loading || props.disabled}
 			{...props}
 		>
-			{children}
-			{icon}
+			{loading ? (
+				<div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+			) : (
+				<>
+					{children}
+					{icon}
+				</>
+			)}
 		</button>
 	);
 };

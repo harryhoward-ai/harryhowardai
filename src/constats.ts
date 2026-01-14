@@ -16,6 +16,16 @@ export const DashFunCoins = {
 	DashFunCoin: "DashFunCoin",
 }
 
+export const HowardToken = {
+	address: "0x9DB1ac6a2E8a10A095318ED15B3221E79539BF54",
+	icon: "https://res.harryhowardai.com/icons/howardai-icon-512.png"
+};
+
+export const TestToken = {
+	address: "0x5E086c0E963eA27027E2Ecd573f0994Aa22Cf9d3",
+	icon: "https://res.harryhowardai.com/icons/howardai-icon-512.png"
+};
+
 //Recharge
 export const RechargePriceType = {
 	USD: 1,
@@ -295,4 +305,50 @@ export type FishingPostData = {
 	createdAt: number;     // 帖子创建时间 (timestamp)
 	location: string;      // 帖子位置
 	fishCatch: string;     // 钓鱼种类
+}
+
+export enum PricePredictStatus {
+	Unsubmitted = 0,
+	Pending = 1,
+	Revealed = 2,
+	Claimed = 3
+}
+
+export type PricePredictData = {
+	id: string;
+	user_id: string;
+	wallet_address: string;
+	predict_date: string;
+	predict_price: number;
+	status: PricePredictStatus;
+	reward_points: number;
+	create_time: number;
+	update_time: number;
+	bet_amount: number;
+	real_price: number;
+}
+
+export type PricePredictConfig = {
+	open: boolean;
+	bet_start_time: number;
+	bet_end_time: number;
+	reveal_time: number;
+	symbol: string;
+	max_diff_limit: number;
+	consolation_rate: number;
+	bet_amounts: number[];
+	pool_info: {
+		rollover_pool: number;
+		today_pool: number;
+		total_pool: number;
+		user_count: number;
+		symbol: string;
+	}
+}
+
+export const PricePredictSymbolMap: { [key: string]: string } = {
+	"BNB": "binancecoin",
+	"BTC": "bitcoin",
+	"ETH": "ethereum",
+	"TON": "the-open-network",
 }

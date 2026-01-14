@@ -7,11 +7,11 @@ import { FC } from 'react';
 import { Env, getEnv } from '@/utils/Api';
 
 // 1. Get projectId
-const projectId = '0cbed54d6cddbb99a52e4fc4a6f209c4';
+const projectId = '8e4276d4bb194be92293390a165e0937';
 
 // 2. Set the networks
 
-const networks: [AppKitNetwork, ...AppKitNetwork[]] = [bsc];
+export const networks: [AppKitNetwork, ...AppKitNetwork[]] = [bsc];
 
 if (getEnv() != Env.Prod) {
 	networks.push(bscTestnet);

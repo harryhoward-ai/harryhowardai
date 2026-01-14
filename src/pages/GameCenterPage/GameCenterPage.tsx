@@ -45,6 +45,9 @@ const pageSetting: PageSettings = {
 	},
 	"/game-center/daily-checkin": {
 		hideTabBar: true,
+	},
+	"/game-center/price-prediction": {
+		doNotScrollPage: true,
 	}
 }
 

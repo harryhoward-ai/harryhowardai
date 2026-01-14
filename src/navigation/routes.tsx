@@ -12,7 +12,8 @@ import { FishingVerse_DailyCheckIn } from "@/pages/GameCenterPage/SubPages/Daily
 import { GameCenter_TopPage } from "@/pages/GameCenterPage/SubPages/TopsPage";
 import LaunchpadPage from "@/pages/Launchpad/LaunchpadPage";
 import { PoolDetailPage } from "@/pages/Launchpad/SubPages/PoolDetailPage";
-import { Bitcoin, Gift, Rocket, Trophy } from "lucide-react";
+import { PricePrediction } from "@/pages/GameCenterPage/SubPages/PricePrediction";
+import { Bitcoin, Gift, Rocket, TrendingUp, Trophy } from "lucide-react";
 import { createHashRouter, RouteObject, useNavigate } from "react-router-dom";
 
 export interface AppRoute {
@@ -69,7 +70,8 @@ export const routes: AppRoute[] = [
       { id: "gamecenter-tops", path: "tops", Component: GameCenter_TopPage, allowYScroll: true, back: "/game-center/main", title: "Top", icon: <Trophy absoluteStrokeWidth size={28} /> },
       { id: "gamecenter-launchpad-pool", path: "launchpad/pool/:id", Component: PoolDetailPage, allowYScroll: true, back: "/game-center/launchpad" },
       { id: "gamecenter-profile", path: "profile", Component: GameCenter_Profile, allowYScroll: true, back: "/game-center/main" },
-      { id: "fishing-verse-daily-checkin", path: "daily-checkin", Component: FishingVerse_DailyCheckIn, allowYScroll: true, back: "/game-center/main" }
+      { id: "fishing-verse-daily-checkin", path: "daily-checkin", Component: FishingVerse_DailyCheckIn, allowYScroll: true, back: "/game-center/main" },
+      { id: "price-prediction", path: "price-prediction", Component: PricePrediction, allowYScroll: true, back: "/game-center/main", title: "Predict", icon: <TrendingUp absoluteStrokeWidth size={28} /> }
     ]
   },
 

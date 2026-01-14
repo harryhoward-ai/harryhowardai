@@ -21,6 +21,9 @@ import { UserProvider } from "./DashFun/DashFunUser";
 import { LanguageProvider } from "./Language/Language";
 import { Page } from "./Page";
 import FirebaseLoader from "./FirebaseLoader/FirebaseLoader";
+import "@/components/Wallet/init_walletconnect";
+import { AppKitProvider } from "@reown/appkit/react";
+import { networks } from "./Wallet/init_walletconnect";
 
 const setupRoute = (route: AppRoute, wrapPage: boolean = true) => {
   let P = () => wrapPage ? <Page back={route.back} allowYScroll={route.allowYScroll}><route.Component /></Page>
@@ -68,20 +71,31 @@ export const App: FC = () => {
       {/* <TalkingDataLoader /> */}
       <FirebaseLoader />
       <BrowserRouter >
-        <LanguageProvider>
-          <UserProvider>
-            <CoinProvider>
-              <SpinWheelProvider>
-                <RouterListener />
-                <Routes>
-                  {routesArr}
-                  <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-                {/* <RouterProvider router={appRoutes} /> */}
-              </SpinWheelProvider>
-            </CoinProvider>
-          </UserProvider>
-        </LanguageProvider>
+        <AppKitProvider
+          projectId="8e4276d4bb194be92293390a165e0937"
+          networks={networks}
+          metadata={{
+            name: 'HarryHowardAI',
+            description: '',
+            url: 'https://app.harryhowardai.com', // origin must match your domain & subdomain
+            icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png']
+          }}
+        >
+          <LanguageProvider>
+            <UserProvider>
+              <CoinProvider>
+                <SpinWheelProvider>
+                  <RouterListener />
+                  <Routes>
+                    {routesArr}
+                    <Route path="*" element={<Navigate to="/" />} />
+                  </Routes>
+                  {/* <RouterProvider router={appRoutes} /> */}
+                </SpinWheelProvider>
+              </CoinProvider>
+            </UserProvider>
+          </LanguageProvider>
+        </AppKitProvider>
       </BrowserRouter>
     </AppRoot>
   );

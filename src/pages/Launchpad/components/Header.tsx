@@ -4,6 +4,9 @@ import { useDashFunCoins } from '@/components/DashFun/DashFunCoins';
 import { useDashFunUser } from '@/components/DashFun/DashFunUser';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { TokenDisplay } from './TokenDisplay';
+import { HowardToken, TestToken } from '@/constats';
+import { Env, getEnv } from '@/utils/Api';
 
 export const Header: FC<{ disableClick?: boolean }> = ({ disableClick = false }) => {
 	const navigator = useNavigate();
@@ -15,6 +18,14 @@ export const Header: FC<{ disableClick?: boolean }> = ({ disableClick = false })
 		}
 	}
 
+	const env = getEnv();
+	let token = HowardToken;
+	if (env != Env.Prod) {
+		token = TestToken;
+	}
+
+	console.log("token is", token)
+
 	//const l = useLocation();
 
 	//所有页面都强制暗色
@@ -25,27 +36,18 @@ export const Header: FC<{ disableClick?: boolean }> = ({ disableClick = false })
 	return (
 		<div className="bg-crypto-bg pb-2">
 			<div className="px-5 pt-6 pb-2 flex items-center justify-between">
-				{/* <div className="flex items-center gap-2 mb-4">
-					<div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center backdrop-blur-sm">
-						<Wallet size={16} className="text-white" />
-					</div>
-					<div>
-						<div className="flex items-center gap-1.5">
-							<span className="text-white font-bold text-sm">Wallet</span>
-							<div className="bg-green-500 rounded-full p-0.5">
-								<Check size={10} className="text-black stroke-[4]" />
-							</div>
-						</div>
-						<div className="text-slate-400 text-xs">Connected: 0x1234...abcd</div>
-					</div>
-				</div> */}
-				<div className="flex items-center gap-3 mb-4">
+				<div className="flex items-center gap-3">
 					<DFProfileAvatar size={48} onClick={onHeaderClicked} />
 					<h1 className="text-3xl font-bold text-crypto-text">Hello, {user?.nickname}</h1>
 				</div>
 				<div>
 					<CoinPanel coin={dp?.coin} userCoinData={dp?.userData} />
 				</div>
+			</div>
+
+			<div className="px-5 pb-4 flex items-center gap-2">
+				<appkit-button />
+				<TokenDisplay tokenAddress={token.address} tokenIcon={token.icon} />
 			</div>
 
 			{/* Enhanced Neon Separator */}

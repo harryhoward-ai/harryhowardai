@@ -3,7 +3,7 @@ import { DashFunUser } from "@/components/DashFunData/UserData"
 import axios from "axios"
 import { currentChannel, isInTelegram } from "./Utils"
 import { Base64 } from 'js-base64';
-import { FishingPostData, FishingVerseUserProfile, SpinWheelInfo } from "@/constats";
+import { FishingPostData, FishingVerseUserProfile, PricePredictConfig, PricePredictData, SpinWheelInfo } from "@/constats";
 import { ForecastPoint, ForecastResponse } from "@/pages/GameCenterPage/Components/CryptoForecastChart";
 
 enum Env {
@@ -1479,6 +1479,24 @@ const MarketsApi = {
 		}
 	},
 
+	price: async (tgToken: string, symbol: string): Promise<number> => {
+		const api = MarketsApi.apiUrl() + "price/" + symbol;
+		const result = await axios.get(api, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		})
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data;
+			} else {
+				throw result.data.msg
+			}
+		} else {
+			throw result.status
+		}
+	},
+
 	forecast: async (tgToken: string, symbol: string): Promise<ForecastPoint[]> => {
 		const api = MarketsApi.apiUrl() + `forecast/${symbol}`
 		const result = await axios.get(api, {
@@ -1574,10 +1592,90 @@ const RechargeLink = {
 	}
 }
 
+
+const PricePredictApi = {
+	apiUrl: () => dashFunApiUrl + "price_predict/",
+
+	bet: async (tgToken: string, price: number, bet_amount: number) => {
+		const api = PricePredictApi.apiUrl() + "bet"
+		const result = await axios.post(api, {
+			price,
+			bet_amount
+		}, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		})
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data as PricePredictData;
+			} else {
+				throw result.data.msg
+			}
+		} else {
+			throw result.status
+		}
+	},
+
+	info: async (tgToken: string) => {
+		const api = PricePredictApi.apiUrl() + "info"
+		const result = await axios.get(api, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		})
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data as PricePredictData;
+			} else {
+				throw result.data.msg
+			}
+		} else {
+			throw result.status
+		}
+	},
+
+	config: async (tgToken: string) => {
+		const api = PricePredictApi.apiUrl() + "config"
+		const result = await axios.get(api, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		})
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data as PricePredictConfig;
+			} else {
+				throw result.data.msg
+			}
+		} else {
+			throw result.status
+		}
+	},
+
+	claim: async (tgToken: string) => {
+		const api = PricePredictApi.apiUrl() + "claim"
+		const result = await axios.post(api, {}, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		})
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data as PricePredictData;
+			} else {
+				throw result.data.msg
+			}
+		} else {
+			throw result.status
+		}
+	}
+}
+
 const getEnv = () => {
 	return env
 }
 
 
-export { AccountType, AccountStatus, AccApi, AirdropApi, GameApi, PaymentApi, RechargeApi, UserApi, TGLink, TaskApi, CoinApi, SpinWheelApi, LeaderBoardApi, FriendsApi, RechargeLink, FishingVerseApi, Api, MarketsApi, getEnv, Env }
+export { AccountType, AccountStatus, AccApi, AirdropApi, GameApi, PaymentApi, RechargeApi, UserApi, TGLink, TaskApi, CoinApi, SpinWheelApi, LeaderBoardApi, FriendsApi, RechargeLink, FishingVerseApi, Api, MarketsApi, PricePredictApi, getEnv, Env }
 export type { PaymentData, RechargeOrder, DashFunAccount, AirdropData, AirdropVestingRequest, TokenMarketInfo }
