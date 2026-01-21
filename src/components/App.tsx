@@ -76,9 +76,9 @@ export const App: FC = () => {
           networks={networks}
           metadata={{
             name: 'HarryHowardAI',
-            description: '',
+            description: 'Launchpad',
             url: 'https://app.harryhowardai.com', // origin must match your domain & subdomain
-            icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png']
+            icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png'],
           }}
         >
           <LanguageProvider>
