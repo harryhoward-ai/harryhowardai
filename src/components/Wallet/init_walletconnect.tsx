@@ -22,7 +22,10 @@ const metadata = {
 	name: 'HarryHowardAI',
 	description: 'Launchpad',
 	url: window.location.origin, // origin must match your domain & subdomain
-	icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png']
+	icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png'],
+	redirect: {
+		universal: window.location.origin
+	}
 }
 
 // 4. Create a AppKit instance
