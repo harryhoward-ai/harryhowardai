@@ -48,6 +48,12 @@ const pageSetting: PageSettings = {
 	},
 	"/game-center/price-prediction": {
 		doNotScrollPage: true,
+	},
+	"/game-center/token": {
+		doNotScrollPage: true,
+	},
+	"/game-center/token/exchange": {
+		doNotScrollPage: true,
 	}
 }
 

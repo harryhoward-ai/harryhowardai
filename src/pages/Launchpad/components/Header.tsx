@@ -2,13 +2,13 @@ import { DFProfileAvatar } from '@/components/Avatar/Avatar';
 import { CoinPanel } from '@/components/Coins/coins';
 import { useDashFunCoins } from '@/components/DashFun/DashFunCoins';
 import { useDashFunUser } from '@/components/DashFun/DashFunUser';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TokenDisplay } from './TokenDisplay';
 import { HowardToken, TestToken } from '@/constats';
 import { Env, getEnv } from '@/utils/Api';
 
-export const Header: FC<{ disableClick?: boolean }> = ({ disableClick = false }) => {
+export const Header: FC<{ disableClick?: boolean }> = memo(({ disableClick = false }) => {
 	const navigator = useNavigate();
 	const user = useDashFunUser();
 
@@ -54,4 +54,4 @@ export const Header: FC<{ disableClick?: boolean }> = ({ disableClick = false })
 			<div className="w-full h-[1px] bg-gradient-to-r from-transparent via-crypto-cyan to-transparent opacity-50 shadow-[0_0_15px_rgba(0,243,255,0.6)]" />
 		</div>
 	);
-};
+});

@@ -22,7 +22,7 @@ export const HowardToken = {
 };
 
 export const TestToken = {
-	address: "0x5E086c0E963eA27027E2Ecd573f0994Aa22Cf9d3",
+	address: "0x9DB1ac6a2E8a10A095318ED15B3221E79539BF54",
 	icon: "https://res.harryhowardai.com/icons/howardai-icon-512.png"
 };
 

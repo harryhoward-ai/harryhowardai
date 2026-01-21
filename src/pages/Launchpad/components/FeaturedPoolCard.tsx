@@ -14,12 +14,15 @@ export const FeaturedPoolCard: FC<FeaturedPoolCardProps> = ({ pool }) => {
 	const { percentage, displayRaised, displayParticipants } = usePoolProgress(pool);
 	const navigate = useNavigate();
 
+	const isEnded = pool.endTime ? Date.now() > pool.endTime : false;
+
 	const handleJoin = () => {
+		if (isEnded) return;
 		navigate(`/game-center/launchpad/pool/${pool.id}`);
 	};
 
 	return (
-		<div onClick={handleJoin} className="relative group rounded-2xl p-[1px] bg-gradient-to-br from-crypto-cyan/30 to-crypto-purple/30 hover:from-crypto-cyan/60 hover:to-crypto-purple/60 transition-all duration-300 cursor-pointer">
+		<div onClick={handleJoin} className={`relative group rounded-2xl p-[1px] transition-all duration-300 ${isEnded ? 'opacity-80 grayscale' : 'bg-gradient-to-br from-crypto-cyan/30 to-crypto-purple/30 hover:from-crypto-cyan/60 hover:to-crypto-purple/60 cursor-pointer'}`}>
 			<div className="absolute inset-0 bg-gradient-to-br from-crypto-cyan/10 to-crypto-purple/10 blur-xl opacity-50" />
 
 			<div className="relative bg-crypto-card/90 backdrop-blur-md rounded-2xl p-5 border border-white/5 shadow-xl">
@@ -42,8 +45,8 @@ export const FeaturedPoolCard: FC<FeaturedPoolCardProps> = ({ pool }) => {
 							<span className="text-white font-medium">${pool.price}</span>
 						</div>
 					</div>
-					<div className="ml-auto px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold border border-green-500/30 animate-pulse">
-						LIVE
+					<div className={`ml-auto px-3 py-1 rounded-full text-xs font-bold border ${isEnded ? 'bg-white/10 text-white/50 border-white/20' : 'bg-green-500/20 text-green-400 border-green-500/30 animate-pulse'}`}>
+						{isEnded ? "ENDED" : "LIVE"}
 					</div>
 				</div>
 
@@ -61,21 +64,25 @@ export const FeaturedPoolCard: FC<FeaturedPoolCardProps> = ({ pool }) => {
 						</div>
 					</div>
 
-					<div className="flex items-center gap-3">
-						<div className="flex-1">
-							<ProgressBar progress={percentage} />
+					{!isEnded && (
+						<div className="flex items-center gap-3">
+							<div className="flex-1">
+								<ProgressBar progress={percentage} />
+							</div>
+							<div className="text-white font-bold text-sm">{percentage.toFixed(0)}%</div>
 						</div>
-						<div className="text-white font-bold text-sm">{percentage.toFixed(0)}%</div>
-					</div>
+					)}
 				</div>
 
 				{/* Action */}
-				<CryptoButton fullWidth icon={<ChevronRight size={18} />} className="mt-6" onClick={(e) => {
-					e.stopPropagation();
-					handleJoin();
-				}}>
-					Join Pool
-				</CryptoButton>
+				{!isEnded && (
+					<CryptoButton fullWidth icon={<ChevronRight size={18} />} className="mt-6" onClick={(e) => {
+						e.stopPropagation();
+						handleJoin();
+					}}>
+						Join Pool
+					</CryptoButton>
+				)}
 			</div>
 		</div>
 	);

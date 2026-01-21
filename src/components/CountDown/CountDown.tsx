@@ -25,7 +25,11 @@ export const CountDown: FC<{ remaining: number; title?: string; onEnd?: () => vo
 		return () => clearInterval(timer);
 	}, [remaining]);
 
-	const hours = Math.floor(countdown / 3600);
+	const totalHours = Math.floor(countdown / 3600);
+	const showDays = totalHours > 72;
+
+	const days = Math.floor(countdown / 86400);
+	const hours = showDays ? Math.floor((countdown % 86400) / 3600) : totalHours;
 	const minutes = Math.floor((countdown % 3600) / 60);
 	const seconds = countdown % 60;
 
@@ -42,6 +46,12 @@ export const CountDown: FC<{ remaining: number; title?: string; onEnd?: () => vo
 					{title}
 				</span>
 				<div className="w-full flex flex-row items-center justify-center gap-2 sm:gap-4">
+					{showDays && (
+						<>
+							<CountdownPanel countdown={days} unit="Day" size={size} />
+							<span className={separatorClass}>:</span>
+						</>
+					)}
 					<CountdownPanel countdown={hours} unit="Hr" size={size} />
 					<span className={separatorClass}>:</span>
 					<CountdownPanel countdown={minutes} unit="Min" size={size} />

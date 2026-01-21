@@ -1672,10 +1672,107 @@ const PricePredictApi = {
 	}
 }
 
+export type ExchangeConfig = {
+	point_name: string;
+	token_name: string;
+	token_address: string;
+	exchange_rate: number;
+	daily_global_limit: number;
+	daily_user_limit: number;
+	start_time: string;
+	duration_days: number;
+}
+
+export type ExchangeInfo = {
+	status: "NotStarted" | "Active" | "Ended";
+	global_used: number;
+	global_remaining: number;
+	user_used: number;
+	user_remaining: number;
+	start_time_unix: number;
+	config: ExchangeConfig;
+}
+
+export type ExchangeHistoryItem = {
+	id: string;
+	user_id: string;
+	date: string;
+	amount: number;
+	token_amount: number;
+	wallet_addr: string;
+	status: number; // 0: 未发放, 1: 已发放, 2: 失败
+	tx_hash: string;
+	create_time: number;
+}
+
+const ExchangeApi = {
+	apiUrl: (): string => {
+		return dashFunApiUrl + "exchange/"
+	},
+
+	info: async (tgToken: string) => {
+		const api = ExchangeApi.apiUrl() + "info"
+		const result = await axios.get(api, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		})
+		if (result.status == 200) {
+			if (result.data.code == 200 || result.data.code == 0) {
+				return result.data.data as ExchangeInfo;
+			} else {
+				throw result.data.message || result.data.msg
+			}
+		} else {
+			throw result.status
+		}
+	},
+
+	doExchange: async (tgToken: string, amount: number, wallet_address?: string) => {
+		const api = ExchangeApi.apiUrl() + "do"
+		const result = await axios.post(api, {
+			amount,
+			wallet_address
+		}, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		})
+		if (result.status == 200) {
+			if (result.data.code == 200 || result.data.code == 0) {
+				return result.data.data as number;
+			} else {
+				throw result.data.message || result.data.msg
+			}
+		} else {
+			throw result.status
+		}
+	},
+
+	history: async (tgToken: string) => {
+		const api = ExchangeApi.apiUrl() + "history"
+		const result = await axios.get(api, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		})
+		if (result.status == 200) {
+			if (result.data.code == 200 || result.data.code == 0) {
+				return result.data.data as ExchangeHistoryItem[];
+			} else {
+				throw result.data.message || result.data.msg
+			}
+		} else {
+			throw result.status
+		}
+	}
+}
+
+
 const getEnv = () => {
 	return env
 }
 
 
-export { AccountType, AccountStatus, AccApi, AirdropApi, GameApi, PaymentApi, RechargeApi, UserApi, TGLink, TaskApi, CoinApi, SpinWheelApi, LeaderBoardApi, FriendsApi, RechargeLink, FishingVerseApi, Api, MarketsApi, PricePredictApi, getEnv, Env }
+export { AccountType, AccountStatus, AccApi, AirdropApi, GameApi, PaymentApi, RechargeApi, UserApi, TGLink, TaskApi, CoinApi, SpinWheelApi, LeaderBoardApi, FriendsApi, RechargeLink, FishingVerseApi, Api, MarketsApi, PricePredictApi, ExchangeApi, getEnv, Env }
 export type { PaymentData, RechargeOrder, DashFunAccount, AirdropData, AirdropVestingRequest, TokenMarketInfo }
