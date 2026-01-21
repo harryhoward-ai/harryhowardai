@@ -13,17 +13,15 @@ import { AppRoot } from "@telegram-apps/telegram-ui";
 import { useEffect, type FC } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
+import "@/components/Wallet/init_walletconnect";
 import { AppRoute, routes } from "@/navigation/routes.tsx";
 import { miniApp, postEvent, useLaunchParams } from "@telegram-apps/sdk-react";
 import { CoinProvider } from "./DashFun/DashFunCoins";
 import { SpinWheelProvider } from "./DashFun/DashFunSpinWheel";
 import { UserProvider } from "./DashFun/DashFunUser";
+import FirebaseLoader from "./FirebaseLoader/FirebaseLoader";
 import { LanguageProvider } from "./Language/Language";
 import { Page } from "./Page";
-import FirebaseLoader from "./FirebaseLoader/FirebaseLoader";
-import "@/components/Wallet/init_walletconnect";
-import { AppKitProvider } from "@reown/appkit/react";
-import { networks } from "./Wallet/init_walletconnect";
 
 const setupRoute = (route: AppRoute, wrapPage: boolean = true) => {
   let P = () => wrapPage ? <Page back={route.back} allowYScroll={route.allowYScroll}><route.Component /></Page>
@@ -71,31 +69,20 @@ export const App: FC = () => {
       {/* <TalkingDataLoader /> */}
       <FirebaseLoader />
       <BrowserRouter >
-        <AppKitProvider
-          projectId="8e4276d4bb194be92293390a165e0937"
-          networks={networks}
-          metadata={{
-            name: 'HarryHowardAI',
-            description: 'Launchpad',
-            url: 'https://app.harryhowardai.com', // origin must match your domain & subdomain
-            icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png'],
-          }}
-        >
-          <LanguageProvider>
-            <UserProvider>
-              <CoinProvider>
-                <SpinWheelProvider>
-                  <RouterListener />
-                  <Routes>
-                    {routesArr}
-                    <Route path="*" element={<Navigate to="/" />} />
-                  </Routes>
-                  {/* <RouterProvider router={appRoutes} /> */}
-                </SpinWheelProvider>
-              </CoinProvider>
-            </UserProvider>
-          </LanguageProvider>
-        </AppKitProvider>
+        <LanguageProvider>
+          <UserProvider>
+            <CoinProvider>
+              <SpinWheelProvider>
+                <RouterListener />
+                <Routes>
+                  {routesArr}
+                  <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+                {/* <RouterProvider router={appRoutes} /> */}
+              </SpinWheelProvider>
+            </CoinProvider>
+          </UserProvider>
+        </LanguageProvider>
       </BrowserRouter>
     </AppRoot>
   );
