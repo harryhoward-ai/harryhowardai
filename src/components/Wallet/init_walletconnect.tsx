@@ -21,7 +21,7 @@ if (getEnv() != Env.Prod) {
 const metadata = {
 	name: 'HarryHowardAI',
 	description: 'Launchpad',
-	url: 'https://app.harryhowardai.com', // origin must match your domain & subdomain
+	url: window.location.origin, // origin must match your domain & subdomain
 	icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png']
 }
 
