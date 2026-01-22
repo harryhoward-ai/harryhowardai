@@ -21,11 +21,8 @@ if (getEnv() != Env.Prod) {
 export const metadata = {
 	name: 'HarryHowardAI',
 	description: 'Launchpad',
-	url: window.location.origin, // origin must match your domain & subdomain
-	icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png'],
-	redirect: {
-		universal: window.location.origin
-	}
+	url: 'https://app.harryhowardai.com', // origin must match your domain & subdomain
+	icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png']
 }
 
 export const adapters = [new EthersAdapter()];
