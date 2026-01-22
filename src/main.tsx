@@ -9,7 +9,7 @@ import DBMgr from './components/DBMgr/DBMgr.ts';
 import "./mockEnv.ts";
 import makeMockTgEnv, { makeBrowserEnv } from './mockEnv.ts';
 import { currentChannel } from './utils/Utils.tsx';
-import initProxy from "@/components/TelegramWebviewProxy/TelegramWebviewProxy.ts";
+// import initProxy from "@/components/TelegramWebviewProxy/TelegramWebviewProxy.ts";
 
 /**
  * tgbot绑定miniapp链接时，不需要entry/tg的路径，只需要router中的路径即可,如/game, /game-center
