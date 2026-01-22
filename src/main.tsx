@@ -69,7 +69,7 @@ sessionStorage.setItem("__TD_td_channel", channel);
 console.log("Platform:", retrieveLaunchParams().platform);
 
 init(retrieveLaunchParams().startParam === 'debug' || getEnv() == Env.Dev, retrieveLaunchParams().platform)
-initProxy();
+// initProxy();
 postEvent("web_app_expand");
 DBMgr.getInstance().openDB();
 
