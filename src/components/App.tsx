@@ -13,7 +13,8 @@ import { AppRoot } from "@telegram-apps/telegram-ui";
 import { useEffect, type FC } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 
-import "@/components/Wallet/init_walletconnect";
+import { adapters, metadata, networks, projectId } from "@/components/Wallet/init_walletconnect";
+import { AppKitProvider } from "@reown/appkit/react";
 import { AppRoute, routes } from "@/navigation/routes.tsx";
 import { miniApp, postEvent, useLaunchParams } from "@telegram-apps/sdk-react";
 import { CoinProvider } from "./DashFun/DashFunCoins";
@@ -69,20 +70,30 @@ export const App: FC = () => {
       {/* <TalkingDataLoader /> */}
       <FirebaseLoader />
       <BrowserRouter >
-        <LanguageProvider>
-          <UserProvider>
-            <CoinProvider>
-              <SpinWheelProvider>
-                <RouterListener />
-                <Routes>
-                  {routesArr}
-                  <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-                {/* <RouterProvider router={appRoutes} /> */}
-              </SpinWheelProvider>
-            </CoinProvider>
-          </UserProvider>
-        </LanguageProvider>
+        <AppKitProvider
+          projectId={projectId}
+          networks={networks}
+          metadata={metadata}
+          adapters={adapters}
+          features={{
+            analytics: true
+          }}
+        >
+          <LanguageProvider>
+            <UserProvider>
+              <CoinProvider>
+                <SpinWheelProvider>
+                  <RouterListener />
+                  <Routes>
+                    {routesArr}
+                    <Route path="*" element={<Navigate to="/" />} />
+                  </Routes>
+                  {/* <RouterProvider router={appRoutes} /> */}
+                </SpinWheelProvider>
+              </CoinProvider>
+            </UserProvider>
+          </LanguageProvider>
+        </AppKitProvider>
       </BrowserRouter>
     </AppRoot>
   );

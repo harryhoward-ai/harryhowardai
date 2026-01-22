@@ -7,7 +7,7 @@ import { FC } from 'react';
 import { Env, getEnv } from '@/utils/Api';
 
 // 1. Get projectId
-const projectId = '8e4276d4bb194be92293390a165e0937';
+export const projectId = '8e4276d4bb194be92293390a165e0937';
 
 // 2. Set the networks
 
@@ -18,7 +18,7 @@ if (getEnv() != Env.Prod) {
 }
 
 // 3. Create a metadata object - optional
-const metadata = {
+export const metadata = {
 	name: 'HarryHowardAI',
 	description: 'Launchpad',
 	url: window.location.origin, // origin must match your domain & subdomain
@@ -28,9 +28,11 @@ const metadata = {
 	}
 }
 
+export const adapters = [new EthersAdapter()];
+
 // 4. Create a AppKit instance
 createAppKit({
-	adapters: [new EthersAdapter()],
+	adapters,
 	networks,
 	metadata,
 	projectId,
