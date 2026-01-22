@@ -9,6 +9,7 @@ import DBMgr from './components/DBMgr/DBMgr.ts';
 import "./mockEnv.ts";
 import makeMockTgEnv, { makeBrowserEnv } from './mockEnv.ts';
 import { currentChannel } from './utils/Utils.tsx';
+import initProxy from './components/TelegramWebviewProxy/TelegramWebviewProxy.ts';
 // import initProxy from "@/components/TelegramWebviewProxy/TelegramWebviewProxy.ts";
 
 /**
@@ -68,7 +69,7 @@ sessionStorage.setItem("__TD_td_channel", channel);
 console.log("Platform:", retrieveLaunchParams().platform);
 
 init(retrieveLaunchParams().startParam === 'debug' || getEnv() == Env.Dev, retrieveLaunchParams().platform)
-// initProxy();
+initProxy();
 postEvent("web_app_expand");
 DBMgr.getInstance().openDB();
 
