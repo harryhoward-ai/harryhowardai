@@ -19,10 +19,10 @@ if (getEnv() != Env.Prod) {
 
 // 3. Create a metadata object - optional
 const metadata = {
-	name: 'DashFun',
-	description: '',
-	url: 'https://app.dashfun.games', // origin must match your domain & subdomain
-	icons: ['https://res.dashfun.games/icons/dashfun-icon-256.png']
+	name: 'HarryHowardAI',
+	description: 'Launchpad',
+	url: 'https://app.harryhowardai.com', // origin must match your domain & subdomain
+	icons: ['https://res.harryhowardai.com/icons/howardai-icon-512.png']
 }
 
 // 4. Create a AppKit instance
