@@ -17,13 +17,13 @@ const [logInfo] = createLogger("DF-FBA", {
 })
 
 const firebaseConfigProd = {
-    apiKey: "AIzaSyBy3kXeMl7W6QBZHQuv_Zu4fh_EqXnGGYs",
-    authDomain: "fishverseweb3-1ee85.firebaseapp.com",
-    projectId: "fishverseweb3-1ee85",
-    storageBucket: "fishverseweb3-1ee85.firebasestorage.app",
-    messagingSenderId: "1055519755845",
-    appId: "1:1055519755845:web:1ada9d2b8e118035c19d2c",
-    measurementId: "G-27176FLZVD"
+    apiKey: "AIzaSyAuwNWrS6NJ9iFDPEif8j3cp-OIjmevAZs",
+    authDomain: "harryhowardai.firebaseapp.com",
+    projectId: "harryhowardai",
+    storageBucket: "harryhowardai.firebasestorage.app",
+    messagingSenderId: "361931016460",
+    appId: "1:361931016460:web:292fece70188563b222129",
+    measurementId: "G-46NYKM98P2"
 };
 const firebaseConfigTest = {
     apiKey: "AIzaSyDUrORKN3kPhqeIdWOwhm2RPP9X4VSP-R0",
