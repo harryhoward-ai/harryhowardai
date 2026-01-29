@@ -18,13 +18,13 @@ export const DashFunCoins = {
 
 export const HowardToken = {
 	address: "0x9DB1ac6a2E8a10A095318ED15B3221E79539BF54",
-	squadGameAddress: "0xB55861b92C99932798041dA77D029D16E3D5Be48",
+	squadGameAddress: "0x5E8d94d13a588c7B725a517Ba166B781afF7BF3a",
 	icon: "https://res.harryhowardai.com/icons/howardai-icon-512.png"
 };
 
 export const TestToken = {
 	address: "0x9DB1ac6a2E8a10A095318ED15B3221E79539BF54",
-	squadGameAddress: "0xB55861b92C99932798041dA77D029D16E3D5Be48",
+	squadGameAddress: "0x5E8d94d13a588c7B725a517Ba166B781afF7BF3a",
 	icon: "https://res.harryhowardai.com/icons/howardai-icon-512.png"
 };
 
