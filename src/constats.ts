@@ -18,11 +18,13 @@ export const DashFunCoins = {
 
 export const HowardToken = {
 	address: "0x9DB1ac6a2E8a10A095318ED15B3221E79539BF54",
+	squadGameAddress: "0x683fB52aB495A06Eeb71425629Baa0cCb4ed23c0",
 	icon: "https://res.harryhowardai.com/icons/howardai-icon-512.png"
 };
 
 export const TestToken = {
 	address: "0x9DB1ac6a2E8a10A095318ED15B3221E79539BF54",
+	squadGameAddress: "0x683fB52aB495A06Eeb71425629Baa0cCb4ed23c0",
 	icon: "https://res.harryhowardai.com/icons/howardai-icon-512.png"
 };
 
@@ -352,3 +354,11 @@ export const PricePredictSymbolMap: { [key: string]: string } = {
 	"ETH": "ethereum",
 	"TON": "the-open-network",
 }
+
+// Squad Game Factions
+export const FACTIONS = [
+	{ id: 'bull', icon: '🐂', name: 'Bull', slogan: 'To The Moon!', numbers: [0, 4, 8, 12], color: 'text-green-400', bg: 'bg-green-500/20', border: 'border-green-500/50', hover: 'hover:bg-green-500/30' },
+	{ id: 'bear', icon: '🐻', name: 'Bear', slogan: 'Short it!', numbers: [1, 5, 9, 13], color: 'text-red-400', bg: 'bg-red-500/20', border: 'border-red-500/50', hover: 'hover:bg-red-500/30' },
+	{ id: 'whale', icon: '🐳', name: 'Whale', slogan: 'Market Maker.', numbers: [2, 6, 10, 14], color: 'text-blue-400', bg: 'bg-blue-500/20', border: 'border-blue-500/50', hover: 'hover:bg-blue-500/30' },
+	{ id: 'ape', icon: '🦍', name: 'Ape', slogan: 'All in!', numbers: [3, 7, 11, 15], color: 'text-purple-400', bg: 'bg-purple-500/20', border: 'border-purple-500/50', hover: 'hover:bg-purple-500/30' },
+];

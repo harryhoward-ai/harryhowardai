@@ -17,6 +17,7 @@ import { Bitcoin, Coins, Gift, Rocket, TrendingUp, Trophy } from "lucide-react";
 import { createHashRouter, RouteObject, useNavigate } from "react-router-dom";
 import { TokenPage } from "@/pages/GameCenterPage/SubPages/TokenPage";
 import { TokenExchangePage } from "@/pages/GameCenterPage/SubPages/TokenExchangePage";
+import { LuckyBlockPage } from "@/pages/GameCenterPage/SubPages/LuckyBlock/LuckyBlockPage";
 
 export interface AppRoute {
   id: string;
@@ -76,7 +77,8 @@ export const routes: AppRoute[] = [
       { id: "fishing-verse-daily-checkin", path: "daily-checkin", Component: FishingVerse_DailyCheckIn, allowYScroll: true, back: "/game-center/main" },
       { id: "price-prediction", path: "price-prediction", Component: PricePrediction, allowYScroll: true, back: "/game-center/main", title: "Predict", icon: <TrendingUp absoluteStrokeWidth size={28} /> },
       { id: "token-page", path: "token", Component: TokenPage, allowYScroll: true, back: "/game-center/main", title: "HHA", icon: <Coins absoluteStrokeWidth size={28} /> },
-      { id: "token-exchange-page", path: "token/exchange", Component: TokenExchangePage, allowYScroll: true, back: "/game-center/token" }
+      { id: "token-exchange-page", path: "token/exchange", Component: TokenExchangePage, allowYScroll: true, back: "/game-center/token" },
+      { id: "lucky-block-page", path: "token/lucky-block", Component: LuckyBlockPage, allowYScroll: true, back: "/game-center/token" }
     ]
   },
 

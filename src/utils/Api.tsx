@@ -1773,6 +1773,147 @@ const getEnv = () => {
 	return env
 }
 
+export const getBscScanLink = (data: string, type: 'tx' | 'block' | 'address' = 'tx') => {
+	const baseUrl = getEnv() === Env.Prod ? "https://bscscan.com" : "https://testnet.bscscan.com";
+	return `${baseUrl}/${type}/${data}`;
+}
 
-export { AccountType, AccountStatus, AccApi, AirdropApi, GameApi, PaymentApi, RechargeApi, UserApi, TGLink, TaskApi, CoinApi, SpinWheelApi, LeaderBoardApi, FriendsApi, RechargeLink, FishingVerseApi, Api, MarketsApi, PricePredictApi, ExchangeApi, getEnv, Env }
-export type { PaymentData, RechargeOrder, DashFunAccount, AirdropData, AirdropVestingRequest, TokenMarketInfo }
+
+
+type SquadBetInfo = {
+	id: string;
+	round_id: number;
+	user_address: string;
+	faction: number;
+	amount: string;
+	is_claimed: boolean;
+	created_at: number;
+} | null;
+
+type SquadRoundInfo = {
+	id: string;
+	round_id: number;
+	winning_faction: number;
+	total_pool: string;
+	winner_pool: string;
+	settled_block_number: number;
+	settled_block_hash: string;
+	is_settled: boolean;
+	updated_at: number;
+	faction_pools: string[];
+};
+
+type SquadInfoResponse = {
+	bet: SquadBetInfo;
+	round: SquadRoundInfo;
+	is_game_active: boolean;
+};
+
+const SquadGameApi = {
+	apiUrl: (): string => {
+		return dashFunApiUrl + "squadgame/";
+	},
+
+	info: async (tgToken: string, address: string): Promise<SquadInfoResponse> => {
+		const api = SquadGameApi.apiUrl() + "info";
+		const formData = new FormData();
+		formData.append("address", address);
+
+		const result = await axios.post(api, formData, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		});
+
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data;
+			} else {
+				throw result.data.msg;
+			}
+		} else {
+			throw result.status;
+		}
+	},
+
+	getRound: async (tgToken: string): Promise<SquadRoundInfo> => {
+		const api = SquadGameApi.apiUrl() + "round";
+
+		const result = await axios.get(api, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		});
+
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data;
+			} else {
+				throw result.data.msg;
+			}
+		} else {
+			throw result.status;
+		}
+	},
+
+	placeBet: async (tgToken: string, params: {
+		faction: number;
+		amount: string;
+		deadline: string;
+		v: number;
+		r: string;
+		s: string;
+		address: string;
+	}): Promise<string> => {
+		const api = SquadGameApi.apiUrl() + "place-bet";
+		const formData = new FormData();
+		formData.append("faction", params.faction.toString());
+		formData.append("amount", params.amount);
+		formData.append("deadline", params.deadline);
+		formData.append("v", params.v.toString());
+		formData.append("r", params.r);
+		formData.append("s", params.s);
+		formData.append("address", params.address);
+
+		const result = await axios.post(api, formData, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		});
+
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data; // Transaction Hash
+			} else {
+				throw result.data.msg;
+			}
+		} else {
+			throw result.status;
+		}
+	},
+
+	claimRewards: async (tgToken: string, address: string): Promise<string> => {
+		const api = SquadGameApi.apiUrl() + "claim-rewards";
+		const formData = new FormData();
+		formData.append("address", address);
+
+		const result = await axios.post(api, formData, {
+			headers: {
+				"Authorization": processToken(tgToken)
+			}
+		});
+
+		if (result.status == 200) {
+			if (result.data.code == 0) {
+				return result.data.data; // Transaction Hash
+			} else {
+				throw result.data.msg;
+			}
+		} else {
+			throw result.status;
+		}
+	}
+};
+
+export { AccountType, AccountStatus, AccApi, AirdropApi, GameApi, PaymentApi, RechargeApi, UserApi, TGLink, TaskApi, CoinApi, SpinWheelApi, LeaderBoardApi, FriendsApi, RechargeLink, FishingVerseApi, Api, MarketsApi, PricePredictApi, ExchangeApi, getEnv, Env, SquadGameApi }
+export type { PaymentData, RechargeOrder, DashFunAccount, AirdropData, AirdropVestingRequest, TokenMarketInfo, SquadBetInfo, SquadRoundInfo, SquadInfoResponse }

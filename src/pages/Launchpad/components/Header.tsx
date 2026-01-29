@@ -24,8 +24,6 @@ export const Header: FC<{ disableClick?: boolean }> = memo(({ disableClick = fal
 		token = TestToken;
 	}
 
-	console.log("token is", token)
-
 	//const l = useLocation();
 
 	//所有页面都强制暗色

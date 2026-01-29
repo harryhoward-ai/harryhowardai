@@ -10,6 +10,7 @@ import XPIcon from "@/icons/xp-icon.svg";
 import HHAIcon from "@/icons/howardai-icon.png";
 
 import { CountDown } from "@/components/CountDown/CountDown";
+import { LuckyBlockWidget } from "./LuckyBlock/LuckyBlockWidget";
 
 export const TokenPage: FC = () => {
 	const navigate = useNavigate();
@@ -120,6 +121,9 @@ export const TokenPage: FC = () => {
 			</div>
 
 			<div className="w-full px-4 pt-4 flex flex-col items-center gap-6 z-10">
+
+				{/* Lucky Block Widget */}
+				<LuckyBlockWidget />
 
 				{/* Exchange Card */}
 				<div className={`w-full relative group rounded-2xl p-[1px] transition-all duration-300 ${isEnded ? 'opacity-80 grayscale' : 'bg-gradient-to-br from-crypto-cyan/30 to-crypto-purple/30 hover:from-crypto-cyan/60 hover:to-crypto-purple/60'}`}>
