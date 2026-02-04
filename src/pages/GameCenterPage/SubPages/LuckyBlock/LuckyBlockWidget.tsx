@@ -43,7 +43,7 @@ export const LuckyBlockWidget: FC = () => {
 			if (tgToken) {
 				try {
 					const data = await SquadGameApi.getRound(tgToken);
-					setRoundInfo(data);
+					setRoundInfo({ ...data.round, is_game_active: data.is_game_active });
 				} catch (error) {
 					console.error("Failed to fetch widget round info:", error);
 				}
@@ -73,8 +73,13 @@ export const LuckyBlockWidget: FC = () => {
 						<h3 className="text-crypto-text text-lg font-bold flex items-center gap-2">
 							🎰 Squad Game
 						</h3>
-						<div className={`px-2 py-0.5 rounded-md text-xs font-bold animate-pulse ${isLocked ? 'bg-red-500/20 text-red-400' : 'bg-green-500/20 text-green-400'}`}>
-							{isLocked ? 'LOCKED' : 'LIVE'}
+						<div className={`px-2 py-0.5 rounded-md text-xs font-bold animate-pulse ${roundInfo?.is_game_active === false
+							? 'bg-gray-500/20 text-gray-400'
+							: isLocked
+								? 'bg-red-500/20 text-red-400'
+								: 'bg-green-500/20 text-green-400'
+							}`}>
+							{roundInfo?.is_game_active === false ? 'INACTIVE' : (isLocked ? 'LOCKED' : 'LIVE')}
 						</div>
 					</div>
 					<p className="text-xs text-crypto-muted leading-tight">
@@ -82,27 +87,40 @@ export const LuckyBlockWidget: FC = () => {
 					</p>
 				</div>
 
-				{/* Factions Vertical Progress */}
-				<LuckyBlockStats className="mb-4" pools={roundInfo?.faction_pools} />
+				{/* Factions Vertical Progress - Hide if inactive */}
+				{roundInfo?.is_game_active !== false && (
+					<LuckyBlockStats className="mb-4" pools={roundInfo?.faction_pools} />
+				)}
 
 				<div className="flex items-center justify-between gap-3">
-					<div className="flex-1 bg-black/20 rounded-lg px-3 py-2 border border-white/5 flex flex-col justify-center">
-						<div className="flex items-center justify-between">
-							<span className="text-[10px] text-crypto-muted">{isLocked ? 'Revealing In:' : 'Betting Closes In:'}</span>
-							<span className={`font-mono text-sm font-bold ${isLocked ? 'text-red-400' : 'text-crypto-cyan'}`}>
-								{Math.floor(timeLeft / 60)}m {timeLeft % 60}s
-							</span>
+					{/* Timer - Hide if inactive */}
+					{roundInfo?.is_game_active !== false ? (
+						<div className="flex-1 bg-black/20 rounded-lg px-3 py-2 border border-white/5 flex flex-col justify-center">
+							<div className="flex items-center justify-between">
+								<span className="text-[10px] text-crypto-muted">{isLocked ? 'Revealing In:' : 'Betting Closes In:'}</span>
+								<span className={`font-mono text-sm font-bold ${isLocked ? 'text-red-400' : 'text-crypto-cyan'}`}>
+									{Math.floor(timeLeft / 60)}m {timeLeft % 60}s
+								</span>
+							</div>
 						</div>
-					</div>
+					) : (
+						<div className="flex-1 bg-black/20 rounded-lg px-3 py-2 border border-white/5 flex flex-col justify-center items-center">
+							<span className="text-xs text-crypto-muted">Game currently paused</span>
+						</div>
+					)}
 
 					<CryptoButton
 						// variant="secondary" 
-						icon={<ChevronRight size={18} />}
-						onClick={() => navigate('/game-center/token/lucky-block')}
-						className="flex-1"
+						icon={roundInfo?.is_game_active !== false && < ChevronRight size={18} />}
+						onClick={() => {
+							if (roundInfo?.is_game_active !== false) {
+								navigate('/game-center/token/lucky-block')
+							}
+						}}
+						className={`flex-1 ${roundInfo?.is_game_active === false ? 'opacity-50 cursor-not-allowed' : ''}`}
 					// disabled={isLocked} // Button enabled per request
 					>
-						{isLocked ? 'Wait Reveal' : 'Place Bet'}
+						{roundInfo?.is_game_active === false ? 'Inactive' : (isLocked ? 'Wait Reveal' : 'Place Bet')}
 					</CryptoButton>
 				</div>
 			</div>

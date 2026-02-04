@@ -1836,7 +1836,7 @@ const SquadGameApi = {
 		}
 	},
 
-	getRound: async (tgToken: string): Promise<SquadRoundInfo> => {
+	getRound: async (tgToken: string): Promise<{ round: SquadRoundInfo, is_game_active: boolean }> => {
 		const api = SquadGameApi.apiUrl() + "round";
 
 		const result = await axios.get(api, {
