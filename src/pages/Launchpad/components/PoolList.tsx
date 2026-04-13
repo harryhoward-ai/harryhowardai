@@ -51,7 +51,8 @@ export const PoolList: FC = () => {
 										{pool.name} <span className="text-crypto-muted text-sm font-normal ml-1">({pool.ticker})</span>
 									</div>
 									<div className="flex items-center text-xs text-crypto-muted mt-1 font-medium">
-										<span className="text-crypto-cyan">{new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit' }).format(pool.startTime)}</span>
+										{/* <span className="text-crypto-cyan">{new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit' }).format(pool.startTime)}</span> */}
+										<span className="text-crypto-cyan">TBD</span>
 										<span className="mx-2 w-1 h-1 rounded-full bg-white/20"></span>
 										<span className="text-white">{pool.chain}</span>
 										<span className="mx-2 w-1 h-1 rounded-full bg-white/20"></span>
